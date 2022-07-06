@@ -141,47 +141,44 @@ function App() {
 
 
   return (
-    <div className="h-[100vh] bg-gray-100">
-      <div className='fixed'>
-        <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
-          <div
-            onClick={() => {
-              gsap.to(window, {
-                duration: 1,
-                scrollTo: {
-                  y: "#display_data_1"
-                }
-              })
-            }}
-          >Go to item 1</div>
-          <div
-            onClick={() => {
-              gsap.to(window, {
-                duration: 1,
-                scrollTo: {
-                  y: "#display_data_2"
-                }
-              })
-            }}
-          >Go to item 2</div>
-          <div
-            onClick={() => {
-              gsap.to(window, {
-                duration: 1,
-                scrollTo: {
-                  y: "#display_data_3"
-                }
-              })
-            }}
-          >Go to item 3</div>
-          <div>{display_data[getCurrentDisplayIndex]?.cover_name}</div>
+    <div class="relative flex min-h-screen flex-col justify-center bg-gray-50">
+      <div class="flex w-full items-start">
+        <div className='sticky top-0'>
+          <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
+            <div
+              onClick={() => {
+                gsap.to(window, {
+                  duration: 1,
+                  scrollTo: {
+                    y: "#display_data_1"
+                  }
+                })
+              }}
+            >Go to item 1</div>
+            <div
+              onClick={() => {
+                gsap.to(window, {
+                  duration: 1,
+                  scrollTo: {
+                    y: "#display_data_2"
+                  }
+                })
+              }}
+            >Go to item 2</div>
+            <div
+              onClick={() => {
+                gsap.to(window, {
+                  duration: 1,
+                  scrollTo: {
+                    y: "#display_data_3"
+                  }
+                })
+              }}
+            >Go to item 3</div>
+            <div>{display_data[getCurrentDisplayIndex]?.cover_name}</div>
+          </div>
         </div>
-      </div>
-      <div className='flex'>
-        <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>    </div>
-        <div
-          ref={rightScreenRef}
-          className=" w-[100vw] flex-grow">
+        <div class="w-full">
           <div
             ref={displayData1Ref}
             id='display_data_1'
