@@ -140,7 +140,7 @@ function App() {
 
 
   return (
-    <div class="relative flex min-h-screen flex-col justify-center bg-gray-50">
+    <div class="relative flex min-h-screen flex-col">
       <div class="flex w-full items-start">
         <div className='sticky top-0'>
           <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
