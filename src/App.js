@@ -34,7 +34,6 @@ function App() {
     },
   ]
 
-  const rightScreenRef = useRef();
   const displayData1Ref = useRef();
   const displayData2Ref = useRef();
   const displayData3Ref = useRef();
