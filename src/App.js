@@ -2,9 +2,10 @@
 import './App.css';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { useEffect, useRef } from 'react';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { useEffect, useRef } from 'react';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 function App() {
 
@@ -34,7 +35,6 @@ function App() {
   //   });
   // }, [])
 
-
   const display_data = [
     {
       cover_name: "hello aiman",
@@ -50,27 +50,62 @@ function App() {
     },
   ]
 
+  const homeMainRef = useRef();
+  const item1Ref = useRef();
+  const item2Ref = useRef();
+
+  useEffect(() => {
+
+  }, [])
+
 
   return (
-    <div className='h-[100vh] bg-gray-100'>
-      <div className="flex">
-        {/* sidebar */}
-        <div className='p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
+    <div className="h-[100vh] bg-gray-100">
+      <div className='fixed'>
+        <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
+          <div
+            ref={item1Ref}
+            onClick={() => {
+              console.log("item1 clicked")
+              gsap.to(window, {
+                duration: 2,
+                scrollTo: {
+                  y: "#display_data_1"
+                }
+              })
+            }}
+          >Go to item 1</div>
+          <div
+            ref={item2Ref}
+            onClick={() => {
+              console.log("item2 clicked")
+              gsap.to(window, {
+                duration: 2,
+                scrollTo: {
+                  y: "#display_data_2"
+                }
+              })
+            }}
+          >Go to item 2</div>
           <div>{display_data[0]?.cover_name}</div>
         </div>
-        {/* right panel */}
-        <div className='w-[100vw] flex-grow h-screen overflow-y-auto'>
-          <div className='h-[100vh] bg-pink-400'>
+      </div>
+      <div className='flex'>
+        <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>    </div>
+        <div class=" w-[100vw] flex-grow">
+          <div
+            id='display_data_1'
+            className='h-[100vh] bg-pink-400'>
             {display_data[0]?.details?.title}
           </div>
-          <div className='h-[100vh] bg-blue-400'>
+          <div
+            id='display_data_2'
+            className='h-[100vh] bg-blue-400'>
             {display_data[1]?.details?.title}
           </div>
         </div>
       </div>
     </div>
-
-
 
 
 
