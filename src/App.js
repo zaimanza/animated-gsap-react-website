@@ -2,11 +2,12 @@
 import './App.css';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from 'react';
+// import { useEffect, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+
   // const squareRef = useRef();
   // const div2Ref = useRef();
 
@@ -34,8 +35,72 @@ function App() {
   // }, [])
 
 
+  const display_data = [
+    {
+      cover_name: "hello aiman",
+      details: {
+        title: "hello there"
+      }
+    },
+    {
+      cover_name: "hello aiman",
+      details: {
+        title: "hello now"
+      }
+    },
+  ]
+
+
   return (
-    <div></div>
+    <div className='h-[100vh] bg-gray-100'>
+      <div className="flex">
+        {/* sidebar */}
+        <div className='p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
+          <div>{display_data[0]?.cover_name}</div>
+        </div>
+        {/* right panel */}
+        <div className='w-[100vw] flex-grow h-screen overflow-y-auto'>
+          <div className='h-[100vh] bg-pink-400'>
+            {display_data[0]?.details?.title}
+          </div>
+          <div className='h-[100vh] bg-blue-400'>
+            {display_data[1]?.details?.title}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // <div className="App" style={{
     //   margin: 0
     // }}
