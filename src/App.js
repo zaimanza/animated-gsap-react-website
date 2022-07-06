@@ -88,7 +88,7 @@ function App() {
           // end: vhToPixels(100),
           scrub: true,
           toggleActions: "play none none none",
-          markers: true,
+          // markers: true,
           onEnter: () => {
             handleIndex(1, 0)
           },
@@ -106,7 +106,7 @@ function App() {
           // end: vhToPixels(100),
           scrub: true,
           toggleActions: "play none none none",
-          markers: true,
+          // markers: true,
           onEnter: () => {
             handleIndex(1, 1)
           },
@@ -124,7 +124,7 @@ function App() {
           // end: vhToPixels(100),
           scrub: true,
           toggleActions: "play none none none",
-          markers: true,
+          // markers: true,
           onEnter: () => {
             handleIndex(1, 2)
           },
