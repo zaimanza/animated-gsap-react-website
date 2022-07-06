@@ -136,6 +136,7 @@ function App() {
       gsap.killTweensOf(displayData2Ref);
       gsap.killTweensOf(displayData3Ref);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
