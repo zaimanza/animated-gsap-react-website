@@ -150,7 +150,6 @@ function App() {
           <div
             ref={item1Ref}
             onClick={() => {
-              // console.log("item1 clicked")
               gsap.to(window, {
                 duration: 1,
                 scrollTo: {
@@ -162,7 +161,6 @@ function App() {
           <div
             ref={item2Ref}
             onClick={() => {
-              // console.log("item2 clicked")
               gsap.to(window, {
                 duration: 1,
                 scrollTo: {
@@ -174,7 +172,6 @@ function App() {
           <div
             ref={item3Ref}
             onClick={() => {
-              // console.log("item3 clicked")
               gsap.to(window, {
                 duration: 1,
                 scrollTo: {
