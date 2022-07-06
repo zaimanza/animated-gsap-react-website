@@ -38,9 +38,6 @@ function App() {
   const displayData1Ref = useRef();
   const displayData2Ref = useRef();
   const displayData3Ref = useRef();
-  const item1Ref = useRef();
-  const item2Ref = useRef();
-  const item3Ref = useRef();
   const run_uno = useRef(false);
 
   const currentDisplayIndexRef = useRef(0);
@@ -148,7 +145,6 @@ function App() {
       <div className='fixed'>
         <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
           <div
-            ref={item1Ref}
             onClick={() => {
               gsap.to(window, {
                 duration: 1,
@@ -159,7 +155,6 @@ function App() {
             }}
           >Go to item 1</div>
           <div
-            ref={item2Ref}
             onClick={() => {
               gsap.to(window, {
                 duration: 1,
@@ -170,7 +165,6 @@ function App() {
             }}
           >Go to item 2</div>
           <div
-            ref={item3Ref}
             onClick={() => {
               gsap.to(window, {
                 duration: 1,
