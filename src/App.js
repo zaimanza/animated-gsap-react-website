@@ -42,6 +42,9 @@ function App() {
   const currentDisplayIndexRef = useRef(0);
   const [getCurrentDisplayIndex, setCurrentDisplayIndex] = useState(0)
 
+  const rightSideRefs = useRef([]);
+  const [getRightSiderefs, setRightSiderefs] = useState([])
+
   const handleIndex = async (state, index) => {
     var current_index = currentDisplayIndexRef.current
     switch (state) {
@@ -72,72 +75,43 @@ function App() {
   }, [getCurrentDisplayIndex]);
 
   useEffect(() => {
-    if (run_uno.current === false) {
-      run_uno.current = true
-
-      gsap.to(displayData1Ref.current, {
-        // x: 700,
-        duration: 1,
-        scrollTrigger: {
-          trigger: displayData1Ref.current,
-          start: "top 50%",
-          // end: vhToPixels(100),
-          scrub: true,
-          toggleActions: "play none none none",
-          // markers: true,
-          onEnter: () => {
-            handleIndex(1, 0)
-          },
-          onLeaveBack: () => {
-            handleIndex(0, 0)
-          }
-        },
-      });
-      gsap.to(displayData2Ref.current, {
-        // x: 700,
-        duration: 1,
-        scrollTrigger: {
-          trigger: displayData2Ref.current,
-          start: "top 50%",
-          // end: vhToPixels(100),
-          scrub: true,
-          toggleActions: "play none none none",
-          // markers: true,
-          onEnter: () => {
-            handleIndex(1, 1)
-          },
-          onLeaveBack: () => {
-            handleIndex(0, 1)
-          }
-        },
-      });
-      gsap.to(displayData3Ref.current, {
-        // x: 700,
-        duration: 1,
-        scrollTrigger: {
-          trigger: displayData3Ref.current,
-          start: "top 50%",
-          // end: vhToPixels(100),
-          scrub: true,
-          toggleActions: "play none none none",
-          // markers: true,
-          onEnter: () => {
-            handleIndex(1, 2)
-          },
-          onLeaveBack: () => {
-            handleIndex(0, 2)
-          }
-        },
-      });
+    if (getRightSiderefs.length === display_data.length) {
+      if (run_uno.current === false) {
+        getRightSiderefs.forEach((currentValue, index) => {
+          gsap.to(currentValue, {
+            // x: 700,
+            duration: 1,
+            scrollTrigger: {
+              trigger: currentValue,
+              start: "top 50%",
+              // end: vhToPixels(100),
+              scrub: true,
+              toggleActions: "play none none none",
+              // markers: true,
+              onEnter: () => {
+                handleIndex(1, index)
+              },
+              onLeaveBack: () => {
+                handleIndex(0, index)
+              }
+            },
+          });
+        })
+      }
     }
 
     return () => {
       gsap.killTweensOf(displayData1Ref);
-      gsap.killTweensOf(displayData2Ref);
-      gsap.killTweensOf(displayData3Ref);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [getRightSiderefs])
+
+  const addRightSideRef = (el) => {
+    if (el && !rightSideRefs.current.includes(el)) {
+      rightSideRefs.current.push(el);
+    }
+    setRightSiderefs(rightSideRefs.current)
+  }
 
 
   return (
@@ -168,24 +142,19 @@ function App() {
           </div>
         </div>
         <div className="w-full">
-          <div
-            ref={displayData1Ref}
-            id='display_data_1'
-            className='h-[100vh] bg-pink-400'>
-            {display_data[0]?.details?.title}
-          </div>
-          <div
-            ref={displayData2Ref}
-            id='display_data_2'
-            className='h-[100vh] bg-blue-400'>
-            {display_data[1]?.details?.title}
-          </div>
-          <div
-            ref={displayData3Ref}
-            id='display_data_3'
-            className='h-[100vh] bg-yellow-400'>
-            {display_data[2]?.details?.title}
-          </div>
+          {
+            display_data.map((currentValue, index) => {
+              return (
+                <div
+                  key={index}
+                  ref={addRightSideRef}
+                  id={`display_data_${index + 1}`}
+                  className='h-[100vh] bg-pink-400'>
+                  {display_data[index]?.details?.title}
+                </div>
+              )
+            })
+          }
         </div>
       </div>
     </div>
