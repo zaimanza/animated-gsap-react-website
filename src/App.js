@@ -141,44 +141,33 @@ function App() {
 
 
   return (
-    <div class="relative flex min-h-screen flex-col">
-      <div class="flex w-full items-start">
+    <div className="relative flex min-h-screen flex-col">
+      <div className="flex w-full items-start">
         <div className='sticky top-0'>
           <div className='hidden sm:block p-2 max-w-[600px] xl min-w-[300px] h-screen bg-green-400'>
-            <div
-              onClick={() => {
-                gsap.to(window, {
-                  duration: 1,
-                  scrollTo: {
-                    y: "#display_data_1"
-                  }
-                })
-              }}
-            >Go to item 1</div>
-            <div
-              onClick={() => {
-                gsap.to(window, {
-                  duration: 1,
-                  scrollTo: {
-                    y: "#display_data_2"
-                  }
-                })
-              }}
-            >Go to item 2</div>
-            <div
-              onClick={() => {
-                gsap.to(window, {
-                  duration: 1,
-                  scrollTo: {
-                    y: "#display_data_3"
-                  }
-                })
-              }}
-            >Go to item 3</div>
+            {
+              display_data.map((currentValue, index) => {
+                return (
+                  <div
+                    key={index}>
+                    <div
+                      onClick={() => {
+                        gsap.to(window, {
+                          duration: 1,
+                          scrollTo: {
+                            y: `#display_data_${index + 1}`
+                          }
+                        })
+                      }}
+                    >Go to item {index + 1}</div>
+                  </div>
+                )
+              })
+            }
             <div>{display_data[getCurrentDisplayIndex]?.cover_name}</div>
           </div>
         </div>
-        <div class="w-full">
+        <div className="w-full">
           <div
             ref={displayData1Ref}
             id='display_data_1'
