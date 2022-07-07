@@ -34,9 +34,7 @@ function App() {
     },
   ]
 
-  const displayData1Ref = useRef();
-  const displayData2Ref = useRef();
-  const displayData3Ref = useRef();
+  const displayData1Ref = useRef()
   const run_uno = useRef(false);
 
   const currentDisplayIndexRef = useRef(0);
@@ -70,6 +68,14 @@ function App() {
 
     }
   }
+
+  const addRightSideRef = (el) => {
+    if (el && !rightSideRefs.current.includes(el)) {
+      rightSideRefs.current.push(el);
+    }
+    setRightSiderefs(rightSideRefs.current)
+  }
+
   useEffect(() => {
     currentDisplayIndexRef.current = getCurrentDisplayIndex
   }, [getCurrentDisplayIndex]);
@@ -105,14 +111,6 @@ function App() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getRightSiderefs])
-
-  const addRightSideRef = (el) => {
-    if (el && !rightSideRefs.current.includes(el)) {
-      rightSideRefs.current.push(el);
-    }
-    setRightSiderefs(rightSideRefs.current)
-  }
-
 
   return (
     <div className="relative flex min-h-screen flex-col">
